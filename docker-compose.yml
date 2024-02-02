@@ -9,12 +9,13 @@ services:
       - 80:80
     volumes:
       - ./src:/var/www/html
+      - ./nginx:/etc/nginx/conf.d/
     depends_on: 
       - mysql
       - php
   
   mysql:
-    image: mariadb:11.3
+    image: mariadb:latest
     ports:
       - 3306:3306
     environment: 
