@@ -12,10 +12,12 @@ services:
       - mysql
       - php
       - assets
+  
   php:
     build:
       context: .
       dockerfile: php.prod.dockerfile
+  
   assets:
     image: node:current-alpine
     volumes:

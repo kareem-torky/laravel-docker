@@ -12,8 +12,9 @@ services:
     depends_on: 
       - mysql
       - php
+  
   mysql:
-    image: mariadb:10.5
+    image: mariadb:11.3
     ports:
       - 3306:3306
     environment: 
@@ -23,12 +24,14 @@ services:
       MYSQL_ROOT_PASSWORD: secret
     volumes:
       - ./mysql:/var/lib/mysql
+  
   php:
     build:
       context: .
       dockerfile: php.dockerfile
     volumes:
       - ./src:/var/www/html
+  
   composer:
     build:
       context: .
@@ -36,12 +39,14 @@ services:
     volumes:
       - ./src:/var/www/html
     working_dir: /var/www/html
+  
   npm:
     image: node:current-alpine
     volumes:
       - ./src:/var/www/html
     entrypoint: ["npm"]
     working_dir: /var/www/html
+  
   artisan:
     build:
       context: .
