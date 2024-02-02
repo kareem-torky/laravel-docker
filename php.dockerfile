@@ -1,7 +1,7 @@
 FROM php:8.2-fpm-alpine
 
-ENV PHPGROUP=laravel
 ENV PHPUSER=laravel
+ENV PHPGROUP=laravel
 
 RUN adduser -g ${PHPGROUP} -s /bin/sh -D ${PHPUSER}
 
